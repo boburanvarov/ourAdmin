@@ -1,0 +1,25 @@
+
+
+<div class="login-body">
+    <div class="login-wrapper">
+        <div class="login-panel">
+            <p class="error" *ngIf="invalidLogin">Пароль или логин неверный</p>
+
+            <form [formGroup]="userLoginForm" action="" (ngSubmit)="signIn()">
+                <div class="login-form">
+                    <h2>Войдите в свой аккаунт</h2>
+                    <p>У вас нет аккаунта?  <a href="#"> Зарегистрироваться</a></p>
+                    <input autocomplete="off" formControlName="userName" pInputText placeholder="Username" type="text">
+                    <input autocomplete="off" formControlName="userPassword" pInputText placeholder="Password"
+                           type="password">
+                    <button label="Вход" pButton pRipple type="submit"></button>
+                </div>
+            </form>
+
+            <a [routerLink]="['/']" class="logo">
+                <img alt="Davr Bank" src="assets/layout/images/davrbank.png"/>
+            </a>
+        </div>
+    </div>
+</div>
+<p-toast key="tc" position="top-center"></p-toast>
