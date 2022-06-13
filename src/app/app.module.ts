@@ -22,7 +22,6 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
         HttpClientModule,
         BrowserAnimationsModule,
         MainsModule,
-
         SweetAlert2Module.forRoot(),
     ],
     declarations: [

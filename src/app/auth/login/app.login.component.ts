@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-// import {AuthService} from '../../mains/Shared/Services/auth.service';
-
-
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
-import {DataService} from '../../mains/Shared/Services/data.service';
+import {TokenService} from '../../mains/Shared/Services/token.service';
+import {AuthService} from '../../mains/Shared/Services/auth.service';
+import {Utils} from '../../mains/Shared/Utilts/Utils';
 
 @Component({
     selector: 'app-login',
@@ -18,27 +17,25 @@ export class AppLoginComponent implements OnInit, OnDestroy {
     invalidLogin: Boolean = false;
 
     // Form
-
-    userLoginForm = new FormGroup({
-        userName: new FormControl('', Validators.required),
-        userPassword: new FormControl('', Validators.required),
-    });
-    password: string | number;
-    username: string;
-
-
     constructor(
         private router: Router,
-        // private authService1: AuthService,
+        private authService: AuthService,
         private messageService: MessageService,
-
-        private dataService: DataService
+        private fb: FormBuilder,
+        private dataService: TokenService
     ) {
     }
 
+    userLoginForm = this.fb.group({
+     userName: ['DavrVacancy', Validators.required],
+     userPassword: ['davr2001', Validators.required]
+ });
+
+
+
     ngOnInit(): void {
 
-        this.dataService.clearSessionStorage();
+        Utils.clearSessionStorage();
 
     }
 
@@ -54,12 +51,16 @@ export class AppLoginComponent implements OnInit, OnDestroy {
             return;
         }
         console.log('submitted');
-        const username = this.userLoginForm.controls['userName'].value;
-        const password = this.userLoginForm.controls['userPassword'].value;
-        // this.authService1.login(username, password).subscribe(res => {
-        //     sessionStorage.setItem('user', JSON.stringify(res));
-        //     this.router.navigate(['/']).then();
-        // });
+      const loginValue =  this.userLoginForm.value;
+        console.log(loginValue);
+        const body = {
+            username: loginValue.userName,
+            password: loginValue.userPassword
+        }
+        this.authService.login(body).subscribe(res => {
+           Utils.setToSessionStorage('login', res);
+            this.router.navigate(['/']).then();
+        });
 
 
     }

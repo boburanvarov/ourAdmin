@@ -84,20 +84,12 @@ import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {AppCodeModule} from './code-module/app.code.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ClientModule} from '../client/client.module';
 import {AppMainComponent} from './main/app.main.component';
-import {AppConfigComponent} from './config/app.config.component'
+import {AppConfigComponent} from './config/app.config.component';
 import {AppMenuitemComponent} from './menu-item/app.menuitem.component';
 import {AppBreadcrumbComponent} from './breadcrumb/app.breadcrumb.component';
 import {AppTopBarComponent} from './topbar/app.topbar.component';
 import {AppFooterComponent} from './footer/app.footer.component';
-import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
-import {AppLoginComponent} from '../auth/login/app.login.component';
-import {AppInvoiceComponent} from './pages/app.invoice.component';
-import {AppHelpComponent} from './pages/app.help.component';
-import {AppNotfoundComponent} from './pages/app.notfound.component';
-import {AppErrorComponent} from './pages/app.error.component';
-import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {MenuService} from './menu/app.menu.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {AppBreadcrumbService} from './breadcrumb/app.breadcrumb.service';
@@ -122,12 +114,6 @@ FullCalendarModule.registerPlugins([
         AppBreadcrumbComponent,
         AppTopBarComponent,
         AppFooterComponent,
-        AppTimelineDemoComponent,
-        AppInvoiceComponent,
-        AppHelpComponent,
-        AppNotfoundComponent,
-        AppErrorComponent,
-        AppAccessdeniedComponent,
         AppConfigComponent,
     ],
     imports: [
@@ -215,9 +201,6 @@ FullCalendarModule.registerPlugins([
         VirtualScrollerModule,
         AppCodeModule,
         ReactiveFormsModule,
-        ClientModule,
-
-
         HttpClientModule,
         FormsModule
     ],

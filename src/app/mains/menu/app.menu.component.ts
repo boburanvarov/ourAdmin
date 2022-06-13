@@ -1,9 +1,9 @@
 import {AppComponent} from '../../app.component';
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../Shared/Services/data.service';
+import {TokenService} from '../Shared/Services/token.service';
 
 @Component({
-    selector: "app-menu",
+    selector: 'app-menu',
     // templateUrl: './app.menu.component.html',
     template: `
         <ul class="layout-menu">
@@ -20,37 +20,36 @@ import {DataService} from '../Shared/Services/data.service';
 })
 export class AppMenuComponent implements OnInit {
 
-    userInfo : any;
     model: any[];
-    constructor(public app: AppComponent, private data: DataService) { }
+
+    constructor(public app: AppComponent, private data: TokenService) {
+    }
 
     ngOnInit() {
 
-        this.userInfo = this.data.getUserRole();
         this.model = [
             {
-                label: "Entered список",
-                icon: "pi pi-fw pi-id-card",
-                routerLink: ["/"],
+                label: 'Отдел',
+                icon: 'pi pi-fw pi-id-card',
+                routerLink: ['/'],
             },
             {
-                label: "Юридик",
-                icon: "pi pi-fw pi-home",
-                items: [
-                    {
-                        label: "Новый",
-                        icon: "pi pi-fw pi-file-o",
-                        routerLink: ["accountCard"],
-                    },
-                    {
-                        label: "Список операция",
-                        icon: "pi pi-fw pi-id-card",
-                        routerLink: ["list"],
-                    },
+                label: 'Должность',
+                icon: 'pi pi-fw pi-home',
+                routerLink: ['position'],
 
-                ],
             },
-            ]
+            {
+                label: 'Вакансия',
+                icon: 'pi pi-fw pi-home',
+                routerLink: ['vacancy'],
+            },
+            {
+                label: 'Резюме',
+                icon: 'pi pi-fw pi-home',
+                routerLink: ['resume'],
+            },
+        ];
 
     }
 }

@@ -14,16 +14,14 @@ export class AppTopBarComponent {
     constructor(
         public appMain: AppMainComponent,
         public app: AppComponent,
-        private route: Router,
+        private router: Router,
         private authService: AuthService,
         private confirmationService: ConfirmationService,
         private messageService: MessageService) {
     }
 
     logOut() {
-        this.authService.isLoggedIn.next(false);
-        this.route.navigate(['/auth']);
-        localStorage.removeItem('token');
+        this.router.navigate(['auth'])
     }
 
     confirm(event: Event) {

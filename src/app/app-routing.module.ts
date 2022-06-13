@@ -7,19 +7,23 @@ import {NgModule} from '@angular/core';
             [
                 {
                     path: '',
-                    redirectTo: "auth",
-                    pathMatch: "full"
+                    redirectTo: 'admins',
+                    pathMatch: 'full'
                 },
-                    {
-                        path: 'auth',
-                        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-                    },
+                {
+                    path: 'auth',
+                    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+                },
+                {
+                    path: 'admins',
+                    loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule)
+                },
 
 
-                    // {path: 'error', component: AppErrorComponent},
-                    // {path: 'access', component: AppAccessdeniedComponent},
-                    // {path: 'notfound', component: AppNotfoundComponent},
-                    // {path: '**', redirectTo: '/notfound'},
+                // {path: 'error', component: AppErrorComponent},
+                // {path: 'access', component: AppAccessdeniedComponent},
+                // {path: 'notfound', component: AppNotfoundComponent},
+                // {path: '**', redirectTo: '/notfound'},
             ],
             {scrollPositionRestoration: 'enabled'}
         ),
