@@ -11,7 +11,7 @@ export class VacanciesService {
     constructor(private http: HttpClient) {
     }
 
-    //departament
+    // departament
     postDepartament(body: any) {
         return this.http.post<any>(API + 'department', body);
     }
@@ -28,7 +28,7 @@ export class VacanciesService {
         return this.http.put<any>(API + 'department', data);
     }
 
-    //position
+    // position
     postPosition(body: any) {
         return this.http.post<any>(API + 'position', body);
     }
@@ -45,8 +45,30 @@ export class VacanciesService {
         return this.http.put(API + 'position', data);
     }
 
+    byPositionId(id: number) {
+        return this.http.get<any>(API + 'department/getByPositionId/' + id);
+    }
+
+    // Vacancy
     postVacancy(body: any) {
         return this.http.post<any>(API + 'vacancy', body);
+    }
+
+    getVacancy() {
+        return this.http.get<any>(API + 'vacancy?page=&size&sort');
+    }
+
+    deleteVacancy(id: number) {
+        return this.http.delete<any>(API + 'vacancy/' + id);
+    }
+
+    editVacancy(data: any) {
+        return this.http.put<any>(API + 'vacancy', data);
+    }
+
+//    resume
+    getResume() {
+        return this.http.get<any>(API + 'resume?page&size&sort');
     }
 
 }
