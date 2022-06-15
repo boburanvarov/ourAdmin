@@ -13,3 +13,8 @@
 //        color: rgb(10, 219, 247);
 //    }
 //}
+
+::ng-deep .active-menuitem-routerlink,
+::ng-deep .active-menuitem-routerlink i{
+    color: aqua !important;
+}

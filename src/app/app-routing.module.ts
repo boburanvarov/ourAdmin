@@ -7,7 +7,7 @@ import {NgModule} from '@angular/core';
             [
                 {
                     path: '',
-                    redirectTo: 'admins',
+                    redirectTo: 'admins/departament',
                     pathMatch: 'full'
                 },
                 {

@@ -31,7 +31,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Отдел',
                 icon: 'pi pi-fw pi-id-card',
-                routerLink: ['/'],
+                routerLink: ['departament'],
             },
             {
                 label: 'Должность',
