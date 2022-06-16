@@ -1,5 +1,6 @@
 import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
+import {AdminGuard} from './mains/Guards/admin.guard';
 
 @NgModule({
     imports: [
@@ -7,7 +8,7 @@ import {NgModule} from '@angular/core';
             [
                 {
                     path: '',
-                    redirectTo: 'admins/departament',
+                    redirectTo: 'auth',
                     pathMatch: 'full'
                 },
                 {
@@ -16,7 +17,8 @@ import {NgModule} from '@angular/core';
                 },
                 {
                     path: 'admins',
-                    loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule)
+                    loadChildren: () => import('./admins/admins.module').then(m => m.AdminsModule),
+                    // canActivate: [AdminGuard]
                 },
 
 

@@ -9,12 +9,14 @@ import {Utils} from '../../mains/Shared/Utilts/Utils';
 @Component({
     selector: 'app-login',
     templateUrl: './app.login.component.html',
+    styleUrls: ['./app.login.component.scss']
 })
 export class AppLoginComponent implements OnInit, OnDestroy {
 
     // Properties
 
     invalidLogin: Boolean = false;
+    errorMessage = '';
 
     // Form
     constructor(
@@ -27,11 +29,12 @@ export class AppLoginComponent implements OnInit, OnDestroy {
     }
 
     userLoginForm = this.fb.group({
-     userName: ['DavrVacancy', Validators.required],
-     userPassword: ['davr2001', Validators.required]
+     userName: ['', Validators.required],
+     userPassword: ['', Validators.required]
  });
 
-
+    // DavrVacancy
+    // davr2001
 
     ngOnInit(): void {
 
@@ -47,7 +50,9 @@ export class AppLoginComponent implements OnInit, OnDestroy {
     signIn() {
 
         if (!this.userLoginForm.valid) {
+            this.userLoginForm.markAllAsTouched();
             console.log('form error');
+
             return;
         }
         console.log('submitted');
@@ -59,7 +64,11 @@ export class AppLoginComponent implements OnInit, OnDestroy {
         }
         this.authService.login(body).subscribe(res => {
            Utils.setToSessionStorage('login', res);
-            this.router.navigate(['/']).then();
+            this.router.navigate(['admins/departament']).then();
+        },
+            (error) => {
+            this.invalidLogin = true;
+                this.errorMessage = error.error.status + ' ' + error.error.description;
         });
 
 
