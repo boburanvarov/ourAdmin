@@ -71,4 +71,8 @@ export class VacanciesService {
         return this.http.get<any>(API + 'resume?page&size&sort');
     }
 
+    deleteResume(id: any) {
+        return this.http.delete<any>(API + 'resume/' + id);
+    }
+
 }

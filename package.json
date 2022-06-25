@@ -34,6 +34,7 @@
         "html2canvas": "^1.4.1",
         "jspdf": "^2.5.1",
         "ngx-autosize": "^1.8.7",
+        "ngx-bootstrap-fix-datepicker": "^5.6.8",
         "ngx-sweetalert2": "^0.2.7",
         "pdfmake": "^0.2.5",
         "primeflex": "2.0.0",

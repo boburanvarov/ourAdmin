@@ -29,9 +29,9 @@ export class AppLoginComponent implements OnInit, OnDestroy {
     }
 
     userLoginForm = this.fb.group({
-     userName: ['', Validators.required],
-     userPassword: ['', Validators.required]
- });
+        userName: ['', Validators.required],
+        userPassword: ['', Validators.required]
+    });
 
     // DavrVacancy
     // davr2001
@@ -56,24 +56,23 @@ export class AppLoginComponent implements OnInit, OnDestroy {
             return;
         }
         console.log('submitted');
-      const loginValue =  this.userLoginForm.value;
+        const loginValue = this.userLoginForm.value;
         console.log(loginValue);
         const body = {
             username: loginValue.userName,
             password: loginValue.userPassword
-        }
+        };
         this.authService.login(body).subscribe(res => {
-           Utils.setToSessionStorage('login', res);
-            this.router.navigate(['admins/departament']).then();
-        },
+                Utils.setToSessionStorage('login', res);
+                this.router.navigate(['admins/departament']).then();
+            },
             (error) => {
-            this.invalidLogin = true;
-                this.errorMessage = error.error.status + ' ' + error.error.description;
-        });
+                this.invalidLogin = true;
+                console.log(error);
+            });
 
 
     }
-
 
 
 }

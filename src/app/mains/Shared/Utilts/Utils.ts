@@ -1,4 +1,4 @@
-export class Utils {
+    export class Utils {
 
     static clearSessionStorage() {
         sessionStorage.clear();
